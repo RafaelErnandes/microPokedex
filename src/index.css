@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: rgba(23, 23, 27, 0.6);
+  --color-detail: #747476;
+}
+
+:root {
+  --color-grass: oklch(75.19% 0.091 144.14);
+  --color-fire: oklch(80.08% 0.1415 61.04);
+  --color-water: oklch(72.14% 0.1365 248.11);
+  --color-poison: oklch(60.24% 0.084 332.45);
+  --color-normal: oklch(78.6% 0.0162 269.94);
+  --color-bug: oklch(80.43% 0.1511 138.68);
+  --color-flying: oklch(65.26% 0.0925 264.8);
+  --color-eletric: oklch(85.43% 0.1411 90.7);
+  --color-ground: oklch(73.36% 0.1544 44.12);
+
+  --color-boxType-grass: oklch(70.87% 0.1591 141.51);
+  --color-boxType-fire: #fd7d24;
+  --color-boxType-water: #4a90da;
+  --color-boxType-poison: oklch(59.18% 0.191 313.47);
+  --color-boxType-normal: #9da0aa;
+  --color-boxType-bug: #8cb330;
+  --color-boxType-flying: #748fc9;
+  --color-boxType-eletric: #f2cb55;
+  --color-boxType-ground: #f78551;
+}
+
+.bg-grass {
+  background-color: var(--color-grass);
+}
+
+.bg-fire {
+  background-color: var(--color-fire);
+}
+
+.bg-water {
+  background-color: var(--color-water);
+}
+
+.bg-poison {
+  background-color: var(--color-poison);
+}
+
+.bg-normal {
+  background-color: var(--color-normal);
+}
+
+.bg-bug {
+  background-color: var(--color-bug);
+}
+
+.bg-flying {
+  background-color: var(--color-flying);
+}
+
+.bg-eletric {
+  background-color: var(--color-eletric);
+}
+
+.bg-ground {
+  background-color: var(--color-ground);
+}
+
+.bg-boxType-grass {
+  background-color: var(--color-boxType-grass);
+}
+
+.bg-boxType-fire {
+  background-color: var(--color-boxType-fire);
+}
+
+.bg-boxType-water {
+  background-color: var(--color-boxType-water);
+}
+
+.bg-boxType-poison {
+  background-color: var(--color-boxType-poison);
+}
+
+.bg-boxType-normal {
+  background-color: var(--color-boxType-normal);
+}
+
+.bg-boxType-bug {
+  background-color: var(--color-boxType-bug);
+}
+
+.bg-boxType-flying {
+  background-color: var(--color-boxType-flying);
+}
+
+.bg-boxType-eletric {
+  background-color: var(--color-boxType-eletric);
+}
+
+.bg-boxType-ground {
+  background-color: var(--color-boxType-ground);
+}
