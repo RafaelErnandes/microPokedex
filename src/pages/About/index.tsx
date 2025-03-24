@@ -19,7 +19,13 @@ export const About = () => {
   const navigate = useNavigate();
 
   const handleReturn = () => {
-    navigate("/");
+    const savedGeneration = localStorage.getItem("generation");
+
+    if (savedGeneration) {
+      navigate(`/?generation=${savedGeneration}`);
+    } else {
+      navigate("/?generation=1");
+    }
   };
 
   useEffect(() => {

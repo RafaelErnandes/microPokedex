@@ -8,7 +8,7 @@ const App = () => {
         <img src={pokeballHeader} alt="pokeball header" className=" h-full" />
       </div>
       <div className="flex justify-center">
-        <span className="text-3xl leading-9 font-bold text-primary pl-5">
+        <span className="text-3xl leading-9 font-bold text-primary">
           Pokedéx
         </span>
       </div>
