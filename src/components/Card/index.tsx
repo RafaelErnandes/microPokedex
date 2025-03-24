@@ -4,7 +4,9 @@ import dotsImage from "../../img/dots.png";
 import pokeball from "../../img/pokeballCard.png";
 import { useNavigate } from "react-router-dom";
 
-export const Card = ({ data, ...rest }: CardProps) => {
+export const Card = (props: CardProps) => {
+  const { data, ...rest } = props;
+
   const type = data.types[0]?.type.name;
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
 
@@ -16,7 +18,7 @@ export const Card = ({ data, ...rest }: CardProps) => {
 
   return (
     <div
-      className={`bg-${type} mt-7 flex-row p-5 rounded-[10px] flex cursor-pointer`}
+      className={`bg-${type} mt-7 flex-row p-5 rounded-[10px] flex cursor-pointer w-[350px] sm:w-[400px] md:w-[450px] lg:w-[500px] xl:w-[550px] transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl`}
       onClick={() => handleNavigation(data.id)}
       {...rest}
     >

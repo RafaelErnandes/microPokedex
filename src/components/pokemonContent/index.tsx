@@ -2,10 +2,13 @@ import { PokemonProps, RequestPoke } from ".";
 import { useEffect, useState } from "react";
 
 import { Card } from "../Card/index.tsx";
+import { SearchBar } from "../SearchBar/index.tsx";
 import { api } from "../../services/pokeService";
 
 export const Pokemons = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState<PokemonProps[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const getAllPokemons = async () => {
@@ -25,6 +28,7 @@ export const Pokemons = () => {
           })
         );
         setPokemons(payloadPokemons);
+        setFilteredPokemons(payloadPokemons);
       } catch (error) {
         console.log(error);
       }
@@ -39,11 +43,31 @@ export const Pokemons = () => {
     return { id, types: types || [] };
   };
 
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    if (term) {
+      setFilteredPokemons(
+        pokemons.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(term.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredPokemons(pokemons);
+    }
+  };
+
   return (
-    <div className="grow bg-white p-5">
-      {pokemons.map((pokemon) => (
-        <Card data={pokemon} key={pokemon.id} />
-      ))}
+    <div className="grow bg-white p-5 flex flex-col justify-center items-center">
+      <SearchBar onSearch={handleSearch} />
+
+      {searchTerm && <h2>Resultados para: "{searchTerm}"</h2>}
+      {filteredPokemons.length === 0 ? (
+        <p>Nenhum Pokémon encontrado.</p>
+      ) : (
+        filteredPokemons.map((pokemon) => (
+          <Card data={pokemon} key={pokemon.id} />
+        ))
+      )}
     </div>
   );
 };

@@ -7,9 +7,11 @@ const App = () => {
       <div className="h-56 w-full bg-white flex justify-center items-center">
         <img src={pokeballHeader} alt="pokeball header" className=" h-full" />
       </div>
-      <span className="text-3xl leading-9 font-bold text-primary pl-5">
-        Pokedéx
-      </span>
+      <div className="flex justify-center">
+        <span className="text-3xl leading-9 font-bold text-primary pl-5">
+          Pokedéx
+        </span>
+      </div>
 
       <Pokemons />
     </div>
