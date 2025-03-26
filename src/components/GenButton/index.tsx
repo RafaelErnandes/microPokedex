@@ -7,7 +7,7 @@ export const GenButton = (props: GenButtonProps) => {
     <button
       onClick={() => onClick(generation)}
       className={`px-4 py-2 rounded-md text-white font-semibold transition-all duration-300 ${
-        isSelected ? "bg-blue-500" : "bg-genButton"
+        isSelected ? "bg-primary" : "bg-genButton"
       } cursor-pointer`}
     >
       {children}
