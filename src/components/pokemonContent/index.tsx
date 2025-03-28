@@ -9,32 +9,33 @@ import { usePokemonsByGeneration } from "../../hooks/use-pokemons-by-generation/
 import { useSearchPokemons } from "../../hooks/use-search-pokemons/index.ts";
 
 export const Pokemons = () => {
-  const [generation, setGeneration] = useState<number>(1);
   const navigate = useNavigate();
+
+  const [generation, setGeneration] = useState<number>(() => {
+    const savedGeneration = localStorage.getItem("generation");
+    const searchParams = new URLSearchParams(location.search);
+    const urlGeneration = searchParams.get("generation");
+
+    if (urlGeneration) {
+      return Number(urlGeneration);
+    } else if (savedGeneration) {
+      return Number(savedGeneration);
+    } else {
+      return 1;
+    }
+  });
 
   const { pokemons, loading } = usePokemonsByGeneration(generation);
   const { searchTerm, filteredPokemons, handleSearch } =
     useSearchPokemons(pokemons);
 
   useEffect(() => {
-    const savedGeneration = localStorage.getItem("generation");
-    const searchParams = new URLSearchParams(location.search);
-    const urlGeneration = searchParams.get("generation");
-
-    if (urlGeneration) {
-      setGeneration(Number(urlGeneration));
-    } else if (savedGeneration) {
-      setGeneration(Number(savedGeneration));
-    } else {
-      setGeneration(1);
-    }
-  }, [location.search]);
+    localStorage.setItem("generation", generation.toString());
+    navigate(`/?generation=${generation}`);
+  }, [generation, navigate]);
 
   const handleGenerationChange = (gen: number) => {
     setGeneration(gen);
-    localStorage.setItem("generation", gen.toString());
-
-    navigate(`/?generation=${gen}`);
   };
 
   return (
